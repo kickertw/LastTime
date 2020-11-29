@@ -2,12 +2,47 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, View, SafeAreaView, Platform, TouchableOpacity, Text } from 'react-native';
 import Header from '../components/Header';
 import TaskListItem from '../components/TaskListItem';
+import { RecurringType } from '../models/Task';
 
 export default function TaskListScreen({ navigation }) {
   const [tasks, setTasks] = useState([
-    { text: 'Changed Oil', category: 'Corolla', lastDate: new Date('2019-01-01'), key: 1},
-    { text: 'Changed Air Filter', category: 'House', lastDate: new Date('2020-01-01'), key: 2},
-    { text: 'Changed Toothbrush', category: 'House', lastDate: new Date('2020-11-01'), key: 3}
+    {
+      id: 1,
+      category: 'Corolla',
+      title: 'Changed oil',
+      history: [
+        {
+          id: 1,
+          date: new Date('2019-11-18')
+        },
+        {
+          id: 2,
+          description: 'Test Description Here',
+          date: new Date('2020-11-18')
+        }
+      ]
+    },
+    {
+      id: 2,
+      category: 'House',
+      title: 'Changed air filter',
+      history: [
+        {
+          id: 3,
+          date: new Date('2020-01-01')
+        },
+        {
+          id: 4,
+          description: 'Test Description Here',
+          date: new Date('2020-04-01')
+        }
+      ],
+      reminder: {
+        recurringType: RecurringType.Monthly,
+        frequency: 3,
+        dayOfMonth: 1
+      }
+    }    
   ]);
 
   const printDate = (date: Date) => {
@@ -16,7 +51,6 @@ export default function TaskListScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
       <View style={styles.content}>
         {/* to form */}
         <View style={styles.list}>
@@ -43,23 +77,5 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: 20
-  },
-  itemContainer: {
-    padding: 12,
-    marginBottom: 2,
-    color: '#000',
-    borderColor: '#bbb',
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderRadius: 5
-  },
-  itemTitle: {
-    color: '#000',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
-  itemDate: {
-    fontStyle: 'italic',
-    fontSize: 12
-  }  
+  }
 });

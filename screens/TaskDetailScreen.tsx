@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function TaskDetailScreen({ route, navigation }) {
   return (
     <View>
-      <Text>Detail View for {route.params.text} Goes Here</Text>
+      <Text>Detail View for {route.params.title} Goes Here</Text>
     </View>
   );
 }
