@@ -1,8 +1,9 @@
- import React from 'react';
- import { NavigationContainer } from '@react-navigation/native';
- import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import TaskListScreen from './screens/TaskListScreen';
 import TaskDetailScreen from './screens/TaskDetailScreen';
+
 
 export default function App() {
   const Stack = createStackNavigator();
