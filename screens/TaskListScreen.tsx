@@ -13,12 +13,12 @@ export default function TaskListScreen({ navigation }) {
       history: [
         {
           id: 1,
-          date: new Date('2019-11-18')
+          date: '2019-11-18'
         },
         {
           id: 2,
           description: 'Test Description Here',
-          date: new Date('2020-11-18')
+          date: '2020-11-18'
         }
       ]
     },
@@ -29,12 +29,12 @@ export default function TaskListScreen({ navigation }) {
       history: [
         {
           id: 3,
-          date: new Date('2020-01-01')
+          date: '2020-01-01'
         },
         {
           id: 4,
           description: 'Test Description Here',
-          date: new Date('2020-04-01')
+          date: '2020-04-01'
         }
       ],
       reminder: {
@@ -44,10 +44,6 @@ export default function TaskListScreen({ navigation }) {
       }
     }    
   ]);
-
-  const printDate = (date: Date) => {
-    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-  }
 
   return (
     <SafeAreaView style={styles.container}>

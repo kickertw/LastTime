@@ -10,7 +10,7 @@ export default function TaskListItem ({ item }) {
     if (task.history) {
       let lastDate = new Date('1900-01-01');
       for (let val of task.history) {
-        lastDate = lastDate < val.date ? val.date : lastDate;
+        lastDate = lastDate < new Date(val.date) ? new Date(val.date) : lastDate;
       }
   
       return (lastDate.getMonth() + 1) + '/' + lastDate.getDate() + '/' + lastDate.getFullYear();
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     color: '#000',
     borderBottomColor: '#bbb',
     borderBottomWidth: 2,
-    borderBottomStyle: 'solid'
+    borderStyle: 'solid'
   },
   itemTitle: {
     color: '#000',

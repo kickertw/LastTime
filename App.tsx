@@ -3,7 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TaskListScreen from './screens/TaskListScreen';
 import TaskDetailScreen from './screens/TaskDetailScreen';
-import Header from './components/Header';
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 
 
 export default function App() {
@@ -11,24 +12,25 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          //headerTitle: () => <Header />
+          title: 'Last Time I 🤷🏼‍♂️',
+          headerStyle: { backgroundColor: 'cornflowerblue'}
+        }}>
         <Stack.Screen 
           name="Home"
           component={TaskListScreen}
           options={{
-            //headerTitle: () => <Header />
-            title: 'Last Time I 🤷🏼‍♂️',
-            headerStyle: { backgroundColor: 'cornflowerblue'}             
-          }}
-          />
-        <Stack.Screen
-          name="Details"
-          component={TaskDetailScreen}
-          options={{
-            title: 'Last Time I 🤷🏼‍♂️',
-            headerStyle: { backgroundColor: 'cornflowerblue'}    
+            headerRight: () => (
+              <TouchableOpacity style={{marginRight: 10}} onPress={() => alert('Adds a new task - TBD!')}>
+                <Ionicons name="md-add-circle" size={32} color="white" />
+              </TouchableOpacity>
+            )
           }}
         />
+        <Stack.Screen name="Details" component={TaskDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

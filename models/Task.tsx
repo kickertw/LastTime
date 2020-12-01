@@ -9,12 +9,12 @@ export interface Task {
 export interface TaskHistory {
   id: number,
   description?: string,
-  date: Date
+  date: string
 }
 
 export interface Reminder {
   recurringType: RecurringType,
-  date?: Date,
+  date?: string,
   dayOfWeek?: number,
   dayOfMonth?: number,
   frequency?: number
